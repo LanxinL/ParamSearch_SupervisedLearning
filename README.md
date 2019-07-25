@@ -2,13 +2,34 @@
 
 This code aims to hyperparameters search for supervised learning. 
 
-The code provide a log module to record the hyperparameters and the corresponding result, and a analysis module to find a best combination of hyperparameters or a set of good combination of hyperparameters.
+The code provide a **log module** to record the hyperparameters and the corresponding result, and an **analysis module** to find a best combination of hyperparameters or a set of good combination of hyperparameters.
 
 ## Requirement
 - numpy
 - pandas
 
 ## Usage
+### 1. log module
+```
+# import
+form loggerToCsv import LoggerToCsv
+
+# new logger obj
+logger = LoggerToCsv('savePath', parameterDict, backUpPath='backUpPath')
+# savePath is used to save all the training result
+# backUpPath is used to save the traing result singlely, whose default is None
+# parameterDict is a dict whose columns are the name of hyperparameters
+
+# record best result
+bestAccuracy = 0.9     # Fake data
+bestAccuracyStd = 0.01 # Fake data
+logger.record('bestAccuracy',bestAccuracy)
+logger.record('bestAccuracyStd',bestAccuracyStd)
+
+# save
+logger.save()
+```
+### 2.analysis mudule
 - Run `python createFakeResult.py` to create faka result data 
   - The data is saved in `path = 'result/fake.csv'`
   - The following parameters decide the distribution of the fake data
@@ -25,8 +46,8 @@ The code provide a log module to record the hyperparameters and the correspondin
   - used for find the best parameters
 - Run `python analysis.py` to find a best combination of hyperparameters or a set of good combination of hyperparameters.
  
- ## test
- ### Exist a best combination of hyperparameters
+ #### 2.2 test analysis mudule
+ ##### 2.2.1 Exist a best combination of hyperparameters
   - Creat Fake data as following setting
     - set `dataSetNum` and `paramRange` whatever you like
       - default values are `dataSetNum = 4` and `paramRange = 2`
@@ -51,7 +72,7 @@ The code provide a log module to record the hyperparameters and the correspondin
  ============= length of analyzed data : 4                      
  ```
  - 4 datasets have the same best combination of hyperparameters, so the length of analyzed data is 4
- ### Don't exist a best combination of hyperparameters
+##### 2.2.2 Don't exist a best combination of hyperparameters
    - Creat Fake data as following setting
     ```
     paramNum = 5      
@@ -75,5 +96,3 @@ The code provide a log module to record the hyperparameters and the correspondin
  ```
  - 4 datasets have 2 uncertain hyperparameters. Each hyperparameter has 2 values. So the length of analyzed data is `2*2*4 =16`
 
-## `TODO`
-- [ ] Create loggerToCsv to save the best result in a constant csv file. 
