@@ -1,5 +1,9 @@
 # ParamsComp_SupervisedLearning
 
+This code aims to hyperparameters search for supervised learning. 
+
+The code provide a log module to record the hyperparameters and the corresponding result, and a analysis module to find a best combination of hyperparameters or a set of good combination of hyperparameters.
+
 ## Requirement
 - numpy
 - pandas
