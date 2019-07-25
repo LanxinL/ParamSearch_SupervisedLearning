@@ -96,3 +96,5 @@ logger.save()
  ```
  - 4 datasets have 2 uncertain hyperparameters. Each hyperparameter has 2 values. So the length of analyzed data is `2*2*4 =16`
 
+## TODO
+- [ ] Support to compare with benchmark in a pointed column
