@@ -6,7 +6,7 @@ path = 'result/fake.csv'
 
 dataSetNum = 4
 paramNum = 5
-bestParamNum = 2
+bestParamNum = 3
 paramRange = 2
 
 fakeDataSets = []
@@ -23,7 +23,7 @@ allFakeParamComb = product(fakeDataSets, *list(fakeParmValue))
 
 fakeResults = pd.DataFrame(columns = ['fakeDataSet'] + fakeParams + ['testAccuracy', 'runTime', 'testAccuracyStd'])
 for i, fakeParamComb in enumerate(allFakeParamComb):
-    if np.asarray(fakeParamComb[1:bestParamNum]).all() == 1:
+    if np.asarray(fakeParamComb[1:bestParamNum+1]).all() == 1:
         fakeResults.loc[i] = list(fakeParamComb) + [np.random.rand()*0.5+0.5, np.random.rand(), np.random.rand()]
     else:
         fakeResults.loc[i] = list(fakeParamComb) + [np.random.rand()*0.5, np.random.rand(), np.random.rand()]
